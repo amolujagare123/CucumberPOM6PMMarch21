@@ -4,7 +4,6 @@ import Pages.DarkskyHomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.ArrayList;
 import java.util.Collections;

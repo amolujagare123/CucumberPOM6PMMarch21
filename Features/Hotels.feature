@@ -12,15 +12,17 @@ Feature: Hotels.com website testing
     Examples:
       | stars   |
       | 5 stars |
-    #  | 4 stars |
-     # | 3 stars |
+      | 4 stars |
+      | 3 stars |
 
 #2
 
+  @hotelsDist
   Scenario: List of all of hotel within 6 km radius of airport
     Given I am on default locations search result screen
     Then I verify system displays all hotels within "6" Km radius of airport
     And I verify "ibis Mumbai" is within radius
+
 
 
 #3
@@ -31,6 +33,7 @@ Feature: Hotels.com website testing
 
 
 #4
+  @roomCount
   Scenario Outline: Verify room count dropdown
     Given I am on hotels.com home page
     When I select <select_rooms> from room dropdown
@@ -38,6 +41,10 @@ Feature: Hotels.com website testing
 
     Examples:
       |select_rooms            | number_of_room_dropdown |
-      | 2                    		 | 2              			          |
-      | 5                     		 | 5               			         |
-      | 9+                    		 | 0                   			    |
+      | 2                      | 2              		 |
+      | 3                      | 3               		 |
+      | 4                      | 4                   	 |
+      | 5                      | 5               		 |
+      | 6                      | 6                   	 |
+      | 7                      | 7               		 |
+      | 9+                     | 0                   	 |

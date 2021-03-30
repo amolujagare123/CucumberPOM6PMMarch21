@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "Features",
         glue="StepDefinition"
-, tags = "@hotelsDist")
+, tags = "@dealPrice")
 public class TestRunner {
 }

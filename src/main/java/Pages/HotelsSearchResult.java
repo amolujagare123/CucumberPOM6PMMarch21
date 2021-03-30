@@ -14,6 +14,47 @@ public class HotelsSearchResult extends Base{
 
     By distancetextRow = By.xpath("//ul[@class='property-landmarks']//li[2]");
 
+    By hotelsNames = By.xpath("//a[@class='property-name-link']");
+
+    By dealPricetext = By.xpath("//ins");
+
+
+    public ArrayList<Integer> getDealPriceList()
+    {
+       ArrayList<String> priceTextRowList = getElementTextList(dealPricetext); // Rs3,200
+
+        ArrayList<Integer> numberList = new ArrayList<>();
+        for(String priceTextRow : priceTextRowList)
+        {
+            System.out.println(priceTextRow);
+           
+            //String priceTextRow = "Rs3,200";
+
+            String priceWithoutRs = priceTextRow.substring(2); // 3,200
+
+            String[] numberParts = priceWithoutRs.split(","); // {"3","200"}
+
+            String numberFinalStr ="";
+
+            for(String number : numberParts)
+            {
+                numberFinalStr = numberFinalStr +number;
+            }
+
+            int numberFinal = Integer.parseInt(numberFinalStr) ; // 3200
+            System.out.println(numberFinal);
+            
+            numberList.add(numberFinal);
+        }
+        return  numberList;
+    }
+
+
+    public  ArrayList<String> getHotelNames()
+    {
+        return getElementTextList(hotelsNames);
+    }
+
     public ArrayList<Double> getAirposrDistances()
     {
         List<String> distRowList = getElementTextList(distancetextRow);

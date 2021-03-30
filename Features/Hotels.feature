@@ -20,16 +20,16 @@ Feature: Hotels.com website testing
   @hotelsDist
   Scenario: List of all of hotel within 6 km radius of airport
     Given I am on default locations search result screen
-    Then I verify system displays all hotels within "6" Km radius of airport
-    And I verify "ibis Mumbai" is within radius
+   # Then I verify system displays all hotels within "6" Km radius of airport
+    And I verify "la meridian" is within radius
 
 
 
 #3
+  @dealPrice
   Scenario: Verify todays deal price value
     Given I am on default locations search result screen
     Then I verify todays deal is less than "5000" rs
-
 
 
 #4

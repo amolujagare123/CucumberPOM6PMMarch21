@@ -120,8 +120,46 @@ public class HotelsSD {
     }
 
     @And("^I verify \"([^\"]*)\" is within radius$")
-    public void i_verify_something_is_within_radius(String strArg1)
+    public void i_verify_something_is_within_radius(String expectedHotel)
     {
+
+        ArrayList<String> hotelsList = hotelsSearchResult.getHotelNames();
+
+        /*for(int i=0;i<hotelsList.size();i++)
+        {
+            System.out.println(hotelsList.get(i));
+        }*/
+
+        boolean flag = false;
+
+        for(String hotelName : hotelsList) // for each
+        {
+            System.out.println(hotelName);
+
+            if(hotelName.contains(expectedHotel))
+                flag =true;
+        }
+
+        Assert.assertTrue(expectedHotel+": this hotel is not there in the search result",flag);
+    }
+
+    @Then("^I verify todays deal is less than \"([^\"]*)\" rs$")
+    public void i_verify_todays_deal_is_less_than_something_rs(String expectedDealPriceStr)  {
+
+        int expectedDealPrice =Integer.parseInt(expectedDealPriceStr); // 5000
+
+        ArrayList<Integer> priceList = hotelsSearchResult.getDealPriceList();
+        System.out.println(priceList);
+
+        boolean flag = true;
+
+        for(Integer actualDealPrice : priceList)
+        {
+            if(actualDealPrice>expectedDealPrice)
+                flag = false;
+        }
+
+        Assert.assertTrue("some deal prices are greater than:"+expectedDealPriceStr,flag);
 
     }
 
